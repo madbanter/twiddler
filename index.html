@@ -8,18 +8,14 @@
     <title>Twiddler</title>
   </head>
   <body>
-    <header>
-      <h1 class="title">Twiddler</h1>
-    </header>
-    <div>
-      <button class="btn btn-default" id="getTweets">More Tweets</button>
-    </div>
     <script>
 
       $(document).ready(function() {
         var $body = $('body');
         $body.html();
 
+        var $tweetZone = $('<div class="tweetZone"></div>');
+        $body.append($tweetZone);
         var done = [];
         var getTweets = function() {
           var index = streams.home.length - 1;
@@ -32,20 +28,19 @@
             $timestamp.text(tweet.created_at);
             // $timestamp.text(ago(tweet.created_at) + ' ago');
             $tweet.append($timestamp);
-            $tweet.appendTo($body);
+            $tweet.appendTo($tweetZone);
             done.push(index);
             index -= 1;
           }
         }
         getTweets();
-
+        $body.prepend('<header><h1 class="title">Twiddler</h1></header>');
+        $body.prepend('<div><button class="btn btn-default" id="getTweets">More Tweets</button></div>');
         $('#getTweets').on( "click", function() {
           getTweets();
         });
       });
 
-
     </script>
-
   </body>
 </html>
