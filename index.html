@@ -22,11 +22,17 @@
           while(index >= 0 && !done.includes(index)) {
             var tweet = streams.home[index];
             var $tweet = $('<div class="tweet"></div>');
+            var $message = $('<div class="message"></div>');
+            $message.text(tweet.message);
             // $tweet.text(index + ' @' + tweet.user + ': ' + tweet.message); // Debug
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            var $user = $('<div></div>');
+            $user.html('<a class="user" href="' + '@'+ tweet.user + '">' + '@' + tweet.user + ': ' + '</a>');
+            // $user.text('@' + tweet.user);
             var $timestamp = $('<div class="timestamp"></div>')
             $timestamp.text(tweet.created_at);
             // $timestamp.text(ago(tweet.created_at) + ' ago');
+            $tweet.append($user, $message);
+            // $tweet.append($message);
             $tweet.append($timestamp);
             $tweet.appendTo($tweetZone);
             done.push(index);
@@ -35,10 +41,11 @@
         }
         getTweets();
         $body.prepend('<header><h1 class="title">Twiddler</h1></header>');
-        $body.prepend('<div><button class="btn btn-default" id="getTweets">More Tweets</button></div>');
+        $('.title').append('<div><button class="btn btn-default" id="getTweets">More Tweets</button></div>');
         $('#getTweets').on( "click", function() {
           getTweets();
         });
+        $body.append('<footer><small>&copy; Adam Brent 2020</small></footer>');
       });
 
     </script>

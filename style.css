@@ -1,13 +1,8 @@
-html {
-  background-color: rgb(220, 245, 255);
-}
-
 body {
   text-align: justify;
   color: cornsilk;
   background: royalblue;
   font-family: 'Roboto', 'Courier New', Courier, monospace;
-  /* border: 2px solid darkslateblue; */
   margin: 0px 20px 0px 20px;
   padding: 20px;
   box-shadow: 1px 1px 10px black;
@@ -15,13 +10,12 @@ body {
 }
 
 footer {
-  /* border: 2px solid darkslateblue; */
   text-align: center;
-  margin: 2px;
-  padding: 2px;
-  display: flex;
-  flex-wrap: wrap;
+  margin: 24 0px;
+  padding: 4px;
   box-shadow: 1px 1px 2px black;
+  margin: auto;
+  width: fit-content;
 }
 
 .title {
@@ -32,27 +26,53 @@ footer {
   font-size: 85px;
   margin: 5px 50px 50px 50px;
   padding: 0px;
+  text-shadow: 2px 2px 4px rgb(0, 1, 48);
+}
+
+.tweetZone {
+  background-color: rgb(220, 245, 255);
+  box-shadow: 1px 1px 5px black;
+  padding: 3px 2px;
+  width: 67%;
+  margin: auto;
 }
 
 .tweet {
   text-shadow: 2px 2px 2px rgb(0, 1, 48);
-  padding: 5px;
-  margin: 4px;
-  box-shadow: 1px 1px 3px black;
+  padding: 5px 10px;
+  margin: 10px;
+  background-color:royalblue;
+  box-shadow: 1px 1px 5px black;
+  display: block;
 }
 
-.btn-default {
-  background-color: cornsilk;
-  color: cornflowerblue;
-  font-weight: bolder;
-  display: flex;
-  flex-flow: column;
+.message {
+  text-shadow: 2px 2px 2px rgb(0, 1, 48);
+  background-color:royalblue;
+  display: inline;
+  text-align: left;
+  font-size: 20px;
+}
+
+.user {
+  text-decoration: none;
+  color: inherit;
+  text-shadow: 2px 2px 2px rgb(0, 1, 48);
+  display: inline-flex;
 }
 
 .timestamp {
   font-size: 12px;
   text-align: justify;
   text-indent: 10px;
+  margin: 2px 0px;
+}
+
+.btn-default {
+  background-color: rgb(220, 245, 255);
+  color: cornflowerblue;
+  font-weight: bolder;
+  float: right;
 }
 
 .hidden {
