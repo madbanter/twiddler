@@ -1,0 +1,60 @@
+html {
+  background-color: rgb(220, 245, 255);
+}
+
+body {
+  text-align: justify;
+  color: cornsilk;
+  background: royalblue;
+  font-family: 'Roboto', 'Courier New', Courier, monospace;
+  /* border: 2px solid darkslateblue; */
+  margin: 0px 20px 0px 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 10px black;
+  text-shadow: 1px 1px 2px rgb(0, 1, 48);
+}
+
+footer {
+  /* border: 2px solid darkslateblue; */
+  text-align: center;
+  margin: 2px;
+  padding: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 2px black;
+}
+
+.title {
+  text-align: center;
+  font-weight: bolder;
+  color: skyblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 85px;
+  margin: 5px 50px 50px 50px;
+  padding: 0px;
+}
+
+.tweet {
+  text-shadow: 2px 2px 2px rgb(0, 1, 48);
+  padding: 5px;
+  margin: 4px;
+  box-shadow: 1px 1px 3px black;
+}
+
+.btn-default {
+  background-color: cornsilk;
+  color: cornflowerblue;
+  font-weight: bolder;
+  display: flex;
+  flex-flow: column;
+}
+
+.timestamp {
+  font-size: 12px;
+  text-align: justify;
+  text-indent: 10px;
+}
+
+.hidden {
+  display: none;
+}

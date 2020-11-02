@@ -3,25 +3,49 @@
   <head>
     <script src="jquery.js"></script>
     <script src="dataGenerator.js"></script>
+    <script src="tinyAgo.min.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <title>Twiddler</title>
   </head>
   <body>
+    <header>
+      <h1 class="title">Twiddler</h1>
+    </header>
+    <div>
+      <button class="btn btn-default" id="getTweets">More Tweets</button>
+    </div>
     <script>
 
-      $(document).ready(function(){
+      $(document).ready(function() {
         var $body = $('body');
-        $body.html('');
+        $body.html();
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
+        var done = [];
+        var getTweets = function() {
+          var index = streams.home.length - 1;
+          while(index >= 0 && !done.includes(index)) {
+            var tweet = streams.home[index];
+            var $tweet = $('<div class="tweet"></div>');
+            // $tweet.text(index + ' @' + tweet.user + ': ' + tweet.message); // Debug
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            var $timestamp = $('<div class="timestamp"></div>')
+            $timestamp.text(tweet.created_at);
+            // $timestamp.text(ago(tweet.created_at) + ' ago');
+            $tweet.append($timestamp);
+            $tweet.appendTo($body);
+            done.push(index);
+            index -= 1;
+          }
         }
+        getTweets();
 
+        $('#getTweets').on( "click", function() {
+          getTweets();
+        });
       });
 
+
     </script>
+
   </body>
 </html>
