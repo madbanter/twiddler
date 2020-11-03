@@ -23,8 +23,8 @@ footer {
   font-weight: bolder;
   color: skyblue;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 85px;
-  margin: 5px 50px 50px 50px;
+  font-size: 120px;
+  margin: 5px 50px;
   padding: 0px;
   text-shadow: 2px 2px 4px rgb(0, 1, 48);
 }
@@ -78,7 +78,7 @@ footer {
 
 #getTweets {
   position: relative;
-  float: right;
+  float: center;
 }
 
 .hidden {
