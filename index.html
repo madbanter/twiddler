@@ -50,14 +50,13 @@
         });
 
         $('.user').on('click', function() {
-          $tweetZone.children().hide();
           var allTweets = $tweetZone.children()
           var username = $(this).parent().prop('username');
-          var userTweets = allTweets.filter(function() {
-            return $(this).prop('username') === username;
+          var otherTweets = allTweets.filter(function() {
+            return $(this).prop('username') !== username;
           });
-          userTweets.each(function() {
-            $(this).show();
+          otherTweets.each(function() {
+            $(this).hide();
           });
         });
 
