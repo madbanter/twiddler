@@ -14,6 +14,21 @@
         var $body = $('body');
         $body.html();
 
+        var createTweet = function(tweetSource) {
+          var $tweet = $('<div class="tweet"></div>');
+          var $message = $('<div class="message"></div>');
+          $message.text(tweetSource.message);
+          var $user = $('<div class="user"></div>');
+          $user.text('@' + tweetSource.user + ': ');
+          $tweet.prop('username', tweetSource.user);
+          var $timestamp = $('<div class="timestamp"></div>')
+          $timestamp.text(tweetSource.created_at);
+          // $timestamp.text(ago(tweet.created_at) + ' ago');
+          $tweet.append($user, $message);
+          $tweet.append($timestamp);
+          $tweet.appendTo($tweetZone);
+        }
+
         var $tweetZone = $('<div class="tweetZone"></div>');
         $body.append($tweetZone);
         var done = [];
@@ -21,20 +36,7 @@
           var index = streams.home.length - 1;
           while(index >= 0 && !done.includes(index)) {
             var tweet = streams.home[index];
-            var $tweet = $('<div class="tweet"></div>');
-            var $message = $('<div class="message"></div>');
-            $message.text(tweet.message);
-            // $tweet.text(index + ' @' + tweet.user + ': ' + tweet.message); // Debug
-            var $user = $('<div></div>');
-            $user.html('<a class="user" href="' + '@'+ tweet.user + '">' + '@' + tweet.user + ': ' + '</a>');
-            // $user.text('@' + tweet.user);
-            var $timestamp = $('<div class="timestamp"></div>')
-            $timestamp.text(tweet.created_at);
-            // $timestamp.text(ago(tweet.created_at) + ' ago');
-            $tweet.append($user, $message);
-            // $tweet.append($message);
-            $tweet.append($timestamp);
-            $tweet.appendTo($tweetZone);
+            createTweet(tweet);
             done.push(index);
             index -= 1;
           }
@@ -42,9 +44,23 @@
         getTweets();
         $body.prepend('<header><h1 class="title">Twiddler</h1></header>');
         $('.title').append('<div><button class="btn btn-default" id="getTweets">More Tweets</button></div>');
-        $('#getTweets').on( "click", function() {
+        $('#getTweets').on('click', function() {
           getTweets();
+          $tweetZone.children().show();
         });
+
+        $('.user').on('click', function() {
+          $tweetZone.children().hide();
+          var allTweets = $tweetZone.children()
+          var username = $(this).parent().prop('username');
+          var userTweets = allTweets.filter(function() {
+            return $(this).prop('username') === username;
+          });
+          userTweets.each(function() {
+            $(this).show();
+          });
+        });
+
         $body.append('<footer><small>&copy; Adam Brent 2020</small></footer>');
       });
 
