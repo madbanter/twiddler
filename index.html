@@ -49,7 +49,7 @@
           $tweetZone.children().show();
         });
 
-        $('.user').on('click', function() {
+        $('.tweetZone').on('click', '.user', function() {
           var allTweets = $tweetZone.children()
           var username = $(this).parent().prop('username');
           var otherTweets = allTweets.filter(function() {
